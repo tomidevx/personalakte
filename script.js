@@ -397,32 +397,14 @@ function setTopSecretPosition(clientX, clientY) {
 }
 
 function wrapText(context, text, x, y, maxWidth, lineHeight) {
-  const paragraphs = text.split('\n');
+  const lines = text.split('\n');
 
-  paragraphs.forEach((paragraph, index) => {
-    const words = paragraph.split(' ');
-    let line = '';
-
-    for (let n = 0; n < words.length; n += 1) {
-      const testLine = line + words[n] + ' ';
-      const metrics = context.measureText(testLine);
-      const testWidth = metrics.width;
-      if (testWidth > maxWidth && n > 0) {
-        context.fillText(line, x, y);
-        line = `${words[n]} `;
-        y += lineHeight;
-      } else {
-        line = testLine;
-      }
-    }
-
+  lines.forEach((line) => {
     context.fillText(line, x, y);
-    if (index < paragraphs.length - 1) {
-      y += lineHeight;
-    }
+    y += lineHeight;
   });
 
-  return y + lineHeight;
+  return y;
 }
 
 function getPersonExtras() {
