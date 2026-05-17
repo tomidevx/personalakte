@@ -69,6 +69,8 @@ p {
 
 textarea {
   resize: vertical;
+  white-space: pre;
+  overflow-wrap: normal;
 }
 
 fieldset {
