@@ -1,0 +1,252 @@
+:root {
+  color-scheme: dark;
+  color: #f2f2f2;
+  background: #10121a;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.app-shell {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+header {
+  margin-bottom: 24px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+p {
+  margin: 0;
+  color: #c2c6d1;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 420px) 1fr;
+  gap: 24px;
+}
+
+.panel {
+  background: #141824;
+  border: 1px solid #242a37;
+  border-radius: 20px;
+  padding: 22px;
+}
+
+.form-panel label,
+.form-panel legend {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.form-panel input[type="text"],
+.form-panel input[type="number"],
+.form-panel textarea,
+.form-panel input[type="file"] {
+  width: 100%;
+  border: 1px solid #2b3345;
+  border-radius: 12px;
+  background: #0f1520;
+  color: #f7f8fc;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+fieldset {
+  border: 1px solid #2b3345;
+  border-radius: 14px;
+  padding: 16px;
+  margin: 0 0 18px;
+}
+
+legend {
+  padding: 0 8px;
+}
+
+label > input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.mugshot-controls {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.mugshot-controls label {
+  font-weight: 500;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.extra-rows {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+  min-height: 120px;
+}
+
+.extra-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.extra-row input {
+  margin-bottom: 0;
+}
+
+.extra-row button {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+.add-extra-btn {
+  width: auto;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #2f4887;
+  border: 1px solid #3b5ab1;
+  margin-bottom: 18px;
+}
+
+.add-extra-btn:hover {
+  filter: brightness(1.06);
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 8px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #7b61ff 0%, #6136ff 100%);
+  color: white;
+  font-weight: 700;
+  padding: 14px 18px;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+.preview-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.preview-card {
+  position: relative;
+  background: #f1e2b8;
+  border: 1px solid rgba(120, 85, 55, 0.44);
+  border-radius: 28px;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  box-shadow: inset 0 0 24px rgba(0,0,0,0.12), 0 24px 48px rgba(0,0,0,0.22);
+  background-image:
+    radial-gradient(circle at 15% 18%, rgba(255,255,255,0.24), transparent 18%),
+    radial-gradient(circle at 82% 10%, rgba(255,255,255,0.16), transparent 16%),
+    linear-gradient(180deg, rgba(255,255,255,0.12), transparent 16%, transparent 84%, rgba(0,0,0,0.08));
+}
+
+.preview-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 18% 18%, rgba(170, 118, 70, 0.16), transparent 17%),
+    radial-gradient(circle at 60% 22%, rgba(151, 103, 62, 0.14), transparent 15%),
+    radial-gradient(circle at 35% 78%, rgba(135, 95, 55, 0.12), transparent 18%);
+  opacity: 0.72;
+}
+
+.preview-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent 20%, transparent 80%, rgba(0,0,0,0.08));
+}
+
+#previewCanvas {
+  width: 100%;
+  max-width: 760px;
+  border-radius: 18px;
+  border: 2px solid rgba(125, 93, 47, 0.42);
+  background: linear-gradient(180deg, #f3e5c0 0%, #e5cf9b 40%, #c8a56a 100%);
+  box-shadow: inset 0 0 0 1px rgba(132, 92, 45, 0.25), inset 0 0 30px rgba(0,0,0,0.1), 0 20px 48px rgba(0,0,0,0.28);
+  position: relative;
+  overflow: hidden;
+}
+
+#previewCanvas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 12% 12%, rgba(255,255,255,0.16), transparent 10%),
+    radial-gradient(circle at 85% 14%, rgba(0,0,0,0.08), transparent 10%),
+    linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.08) 100%);
+  opacity: 0.44;
+}
+
+.hint {
+  margin: 10px 0 0;
+  font-size: 0.92rem;
+  color: #c8b59a;
+}
+
+.preview-card::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 20px;
+  background-image: radial-gradient(circle at 12% 12%, rgba(255, 255, 255, 0.14), transparent 14%),
+    radial-gradient(circle at 85% 14%, rgba(0,0,0,0.08), transparent 10%),
+    radial-gradient(circle at 40% 75%, rgba(0,0,0,0.08), transparent 14%);
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}

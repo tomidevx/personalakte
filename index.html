@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personenakte Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header>
+      <div>
+        <h1>Personenakte Generator</h1>
+        <p>Erstelle eine Akte mit Mugshot, Beschreibung und lade das Bild herunter.</p>
+      </div>
+    </header>
+
+    <section class="layout">
+      <form id="akteForm" class="panel form-panel">
+        <h2>Personendaten</h2>
+
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Max Mustermann" />
+
+        <label for="alter">Alter</label>
+        <input id="alter" name="alter" type="number" min="0" placeholder="36" />
+
+        <label for="personGeburtstag">Geburtstag</label>
+        <input id="personGeburtstag" name="personGeburtstag" type="text" placeholder="01.01.1988" />
+
+        <label>Personenbeschreibung</label>
+        <input id="personAugenfarbe" name="personAugenfarbe" type="text" placeholder="Augenfarbe" />
+        <input id="personHaarfarbe" name="personHaarfarbe" type="text" placeholder="Haarfarbe" />
+        <input id="personZugehoerigkeit" name="personZugehoerigkeit" type="text" placeholder="Zugehörigkeit" />
+
+        <label>Weitere Merkmale</label>
+        <div id="personExtras" class="extra-rows"></div>
+        <button type="button" id="addExtraBtn" class="add-extra-btn">+ Weitere Merkmale hinzufügen</button>
+
+        <label for="beschreibung">Beschreibung</label>
+        <textarea id="beschreibung" name="beschreibung" rows="5" placeholder="Beschreibe die Person..."></textarea>
+
+        <label for="mugshot">Mugshot hochladen</label>
+        <input id="mugshot" name="mugshot" type="file" accept="image/*" />
+
+        <div class="mugshot-controls">
+          <label for="mugshotOffsetX">Mugshot X</label>
+          <input id="mugshotOffsetX" type="range" min="-200" max="200" value="0" />
+          <label for="mugshotOffsetY">Mugshot Y</label>
+          <input id="mugshotOffsetY" type="range" min="-200" max="200" value="0" />
+          <label for="mugshotScale">Mugshot Größe</label>
+          <input id="mugshotScale" type="range" min="50" max="140" value="90" />
+        </div>
+
+        <fieldset>
+          <legend>Top Secret Stempel</legend>
+          <label>
+            <input id="showTopSecret" type="checkbox" checked />
+            TOP SECRET Stempel anzeigen
+          </label>
+          <label for="topSecretScale">Top Secret Größe</label>
+          <input id="topSecretScale" type="range" min="50" max="350" value="120" />
+          <p class="hint">Ziehe den Stempel direkt im Mugshot-Bereich, um ihn zu positionieren.</p>
+        </fieldset>
+
+        <button id="downloadBtn" type="button">Bild herunterladen</button>
+      </form>
+
+      <section class="panel preview-panel">
+        <h2>Live Preview</h2>
+        <div class="preview-card" id="previewCard">
+          <canvas id="previewCanvas" width="760" height="960"></canvas>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
